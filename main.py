@@ -14,6 +14,16 @@ dp = Dispatcher(bot)
 
 
 async def get_file_id(message: types.Message) -> str:
+    """
+    Get the file ID from a Telegram message.
+
+    Args:
+        message (types.Message): The Telegram message object.
+
+    Returns:
+        str: The file ID.
+    """
+
     if message.content_type == types.ContentType.VOICE:
         return message.voice.file_id
     elif message.content_type == types.ContentType.AUDIO:
@@ -25,6 +35,13 @@ async def get_file_id(message: types.Message) -> str:
 
 
 async def process_audio_message(message: types.Message):
+    """
+    Process an audio message to text.
+
+    Args:
+        message (types.Message): The Telegram message object.
+    """
+
     start = time()
     file_id = await get_file_id(message)
 
@@ -51,11 +68,25 @@ async def process_audio_message(message: types.Message):
 
 @dp.message_handler(commands=["start"])
 async def cmd_start(message: types.Message):
+    """
+    Handle the /start command.
+
+    Args:
+        message (types.Message): The Telegram message object.
+    """
+
     await message.reply("Ожидаю аудио сообщение")
 
 
 @dp.message_handler(commands=["help"])
 async def cmd_start(message: types.Message):
+    """
+    Handle the /help command.
+
+    Args:
+        message (types.Message): The Telegram message object.
+    """
+
     await message.reply("Просто отправь мне любой войс или документ со звуком")
 
 
@@ -65,6 +96,13 @@ async def cmd_start(message: types.Message):
     ContentType.DOCUMENT
 ])
 async def voice_message_handler(message: types.Message):
+    """
+    Handle voice, audio, or document messages with sound.
+
+    Args:
+        message (types.Message): The Telegram message object.
+    """
+
     await process_audio_message(message)
 
 

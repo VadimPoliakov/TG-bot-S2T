@@ -5,3 +5,4 @@ __pycache__
 /recasepunc/
 .idea
 **/.DS_Store
+/model/

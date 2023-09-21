@@ -9,6 +9,21 @@ rec = KaldiRecognizer(model, 16000)
 rec.SetWords(True)
 
 class AudioProcessor:
+    """
+    A class for processing audio files.
+
+    Args:
+        input_audio (str): The path to the input audio file.
+
+    Attributes:
+        input_audio (str): The path to the input audio file.
+
+    Methods:
+        convert_to_wav: Converts the input audio to WAV format.
+        add_punctuation: Adds punctuation to the transcribed text.
+        process_audio: Processes the input audio file and returns the transcribed text with punctuation.
+    """
+
     def __init__(self, input_audio):
         self.input_audio = input_audio
 
