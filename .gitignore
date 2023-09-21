@@ -1,0 +1,7 @@
+__pycache__
+/.env
+/model_big/
+/venv/
+/recasepunc/
+.idea
+**/.DS_Store
